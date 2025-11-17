@@ -141,3 +141,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom user model
 # ==========================================================
 AUTH_USER_MODEL = 'accounts.User'
+
+ALLOWED_HOSTS = ['app.onrender.com', 'localhost', '127.0.0.1']
+
