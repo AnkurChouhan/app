@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Payments{% endblock %}
+{% block header %}Payments{% endblock %}
+
+{% block content %}
+<h2>Payments Page</h2>
+<p>Manage all payment-related tasks here.</p>
+
+<h3>Available Plans</h3>
+<ul>
+  {% for plan in plans %}
+    <li>
+      <strong>{{ plan.name }}</strong> - ${{ plan.price }} for {{ plan.duration_days }} days
+      <br>
+      {{ plan.benefits }}
+      <br>
+      <a href="{% url 'payments:subscribe' plan.id %}">Subscribe</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<h3>Active Subscriptions</h3>
+<ul>
+  {% for sub in subscriptions %}
+    <li>{{ sub.plan.name }} (ends on {{ sub.end_date }})</li>
+  {% empty %}
+    <li>No active subscriptions.</li>
+  {% endfor %}
+</ul>
+
+<h3>Transactions</h3>
+<ul>
+  {% for tx in transactions %}
+    <li>{{ tx.timestamp }} - ${{ tx.amount }} ({{ tx.status }})</li>
+  {% empty %}
+    <li>No transactions found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

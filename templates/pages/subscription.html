@@ -1,0 +1,113 @@
+{% extends 'global.html' %}
+{% load static %}
+
+{% block title %}Subscription | Premium Plans{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/subscription.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- ================== Hero Section ================== -->
+<section id="hero-section">
+  <div class="hero-content container">
+    <!-- Hero Text -->
+    <div class="hero-text">
+      <h1>Enjoy Music Without Limits</h1>
+      <p>Stream, download, and discover your favorite tunes with our premium plans.</p>
+      <a href="#plans-section" class="btn btn-primary" id="btn-get-started">Choose Your Plan</a>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img src="{% static 'images/sonymusic.png' %}" alt="Music streaming hero image">
+    </div>
+  </div>
+</section>
+
+<!-- ================== Plans Section ================== -->
+<section id="plans-section">
+  <div class="plans-grid container">
+    <!-- Plan 1: Individual -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <h2>Individual</h2>
+        <p class="plan-price">$139 for 3 months</p>
+      </div>
+      <p class="plan-sub">$139/month after. Cancel anytime.</p>
+      <ul class="plan-features">
+        <li>1 Premium account</li>
+        <li>Ad-free listening</li>
+        <li>Download to listen offline</li>
+        <li>Play songs in any order</li>
+        <li>High audio quality</li>
+      </ul>
+      <a href="{% url 'accounts:signup_step1' %}" class="btn btn-cta">Get Started</a>
+    </div>
+
+    <!-- Plan 2: Duo -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <h2>Duo</h2>
+        <p class="plan-price">$179 for 2 months</p>
+      </div>
+      <p class="plan-sub">$179/month after. Cancel anytime.</p>
+      <ul class="plan-features">
+        <li>2 Premium accounts</li>
+        <li>Ad-free listening</li>
+        <li>Download to listen offline</li>
+        <li>Play songs in any order</li>
+        <li>High audio quality</li>
+      </ul>
+      <a href="{% url 'accounts:signup_step1' %}" class="btn btn-cta">Get Started</a>
+    </div>
+
+    <!-- Plan 3: Family -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <h2>Family</h2>
+        <p class="plan-price">$229 for 2 months</p>
+      </div>
+      <p class="plan-sub">$229/month after. Cancel anytime.</p>
+      <ul class="plan-features">
+        <li>Up to 6 Premium accounts</li>
+        <li>Ad-free listening</li>
+        <li>Download to listen offline</li>
+        <li>Play songs in any order</li>
+        <li>High audio quality</li>
+      </ul>
+      <a href="{% url 'accounts:signup_step1' %}" class="btn btn-cta">Get Started</a>
+    </div>
+
+    <!-- Plan 4: Student -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <h2>Student</h2>
+        <p class="plan-price">$69 for 2 months</p>
+      </div>
+      <p class="plan-sub">$69/month after. Cancel anytime.</p>
+      <ul class="plan-features">
+        <li>1 Premium account</li>
+        <li>Ad-free listening</li>
+        <li>Download to listen offline</li>
+        <li>Play songs in any order</li>
+        <li>High audio quality</li>
+      </ul>
+      <a href="{% url 'accounts:signup_step1' %}" class="btn btn-cta">Get Started</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================== FAQ Section ================== -->
+<section id="faq-section">
+  <div class="faq-grid container">
+    {% for faq in faqs %}
+    <details>
+      <summary>{{ faq.question }}</summary>
+      <p>{{ faq.answer }}</p>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

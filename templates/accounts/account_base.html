@@ -1,0 +1,36 @@
+{% extends 'global.html' %}
+{% load static %}
+
+{% block title %}Account | Sony Music{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/account_layout.css' %}">
+{% endblock %}
+
+{% block header %}
+<!-- ================== Custom Account Header ================== -->
+<header class="account-header">
+  <div class="container">
+    <a href="/" class="logo">Sony Music</a>
+    <nav class="account-nav">
+      <a href="{% url 'accounts:user_profile' %}" class="active">Overview</a>
+      <a href="{% url 'accounts:subscription' %}">Subscription</a>
+      <a href="{% url 'accounts:user_edit_profile' %}">Edit Profile</a>
+    </nav>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="account-wrapper">
+
+  <!-- ================== Sidebar ================== -->
+  {% include 'accounts/partials/account_sidebar.html' %}
+
+  <!-- ================== Main Content ================== -->
+  <main class="account-main">
+    {% block account_content %}{% endblock %}
+  </main>
+
+</div>
+{% endblock %}

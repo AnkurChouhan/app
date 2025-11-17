@@ -1,0 +1,106 @@
+/* ============================= */
+/* Footer (Responsive + Fluid)   */
+/* ============================= */
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(20deg, #ff0984, #1e90ff); /* pink → blue */
+    padding: 12px 28px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* allow wrapping on smaller screens */
+
+    gap: 12px; /* space between text and button when wrapped */
+}
+
+/* Footer text container */
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 200px; /* allows flexible resizing */
+    min-width: 180px;
+}
+
+.footer-subtitle {
+    font-size: clamp(14px, 2vw, 18px); /* fluid text size */
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #ffffff;
+}
+
+.footer-description {
+    font-size: clamp(12px, 1.6vw, 16px); /* fluid text size */
+    color: #ffffff;
+}
+
+/* ============================= */
+/* Button (Responsive)           */
+/* ============================= */
+.btn-hero {
+    text-decoration: none;
+    background: #ffffff;
+    color: #000000;
+    width: clamp(120px, 25vw, 160px); /* fluid width */
+    height: clamp(40px, 6vw, 45px);   /* fluid height */
+    border-radius: 999px;
+    font-size: clamp(13px, 1.8vw, 15px);
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-hero:hover {
+    background: #f0f0f0;
+}
+
+/* ============================= */
+/* Responsive Layout Adjustments */
+/* ============================= */
+
+/* Medium devices (tablets) */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding: 16px 20px;
+    }
+
+    .btn-hero {
+        align-self: stretch; /* full width on smaller screens */
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* Small devices (phones) */
+@media (max-width: 480px) {
+    .footer {
+        padding: 14px 16px;
+    }
+
+    .footer-subtitle {
+        font-size: 14px;
+    }
+
+    .footer-description {
+        font-size: 13px;
+    }
+
+    .btn-hero {
+        width: 100%;
+        font-size: 14px;
+        height: 42px;
+    }
+}

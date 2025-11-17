@@ -1,0 +1,107 @@
+/* ------------------ Edit Profile Section ------------------ */
+#edit-profile-section {
+  background: #121212;
+  padding: 60px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+}
+
+.edit-profile-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.edit-profile-card {
+  background: #1c1c1c;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.edit-profile-card h2 {
+  font-size: 1.6rem;
+  color: #fd0000;
+  margin-bottom: 8px;
+}
+
+.edit-profile-card .subtitle {
+  font-size: 0.95rem;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.edit-profile-form .form-group {
+  margin-bottom: 18px;
+}
+
+.edit-profile-form label {
+  display: block;
+  font-size: 0.9rem;
+  color: #ddd;
+  margin-bottom: 6px;
+}
+
+.edit-profile-form input[type="text"],
+.edit-profile-form input[type="email"],
+.edit-profile-form input[type="password"],
+.edit-profile-form input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  background: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: border 0.3s ease;
+}
+
+.edit-profile-form input:focus {
+  border: 1px solid #fd0000;
+  outline: none;
+}
+
+/* Avatar Upload */
+.avatar-upload {
+  text-align: center;
+}
+
+.avatar-preview {
+  margin-bottom: 12px;
+}
+
+.avatar-preview img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #fd0000;
+  object-fit: cover;
+}
+
+/* Actions */
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.form-actions .btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

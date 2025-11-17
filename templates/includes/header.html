@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Style Header</title>
+
+  <!-- Font Awesome (for icons like download, hamburger, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/home_header.css' %}">
+</head>
+<body>
+
+  <!-- ==================== SPOTIFY STYLE HEADER ==================== -->
+  <header id="home-header">
+    <div class="container header-container">
+
+      <!-- LEFT: LOGO -->
+      <div id="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/sonymusic.png' %}" alt="Logo">
+        </a>
+      </div>
+
+      <!-- CENTER: NAV + SEARCH -->
+      <div class="center-nav">
+        <!-- Home Icon -->
+        <a href="{% url 'home' %}" class="nav-icon home-icon" data-clicked="false">
+          <img src="{% static 'images/icons/home_unhover.svg' %}" alt="Home" class="home-img">
+        </a>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <a href="#" class="nav-icon search-icon" data-clicked="false">
+            <img src="{% static 'images/icons/search_unhover.svg' %}" alt="Search" class="search-img">
+          </a>
+          <input type="text" placeholder="What do you want to listen to?" />
+          <a href="#" class="nav-icon mic-icon" data-clicked="false">
+            <img src="{% static 'images/icons/mic_unhover.svg' %}" alt="Voice Search" class="mic-img">
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT NAVIGATION -->
+      <div class="right-nav">
+        <a href="#" class="nav-link">Premium</a>
+        <a href="#" class="nav-link">Support</a>
+        <a href="#" class="nav-link">Download</a>
+
+        <a href="#" class="nav-link install-app">
+          <i class="fa-solid fa-circle-down"></i> Install App
+        </a>
+
+        <div class="auth-buttons">
+          <a href="{% url 'accounts:signup_step1' %}" class="btn-outline">Sign up</a>
+          <a href="{% url 'accounts:login_step1' %}" class="btn-primary">Log in</a>
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+      <a href="#">Premium</a>
+      <a href="#">Support</a>
+      <a href="#">Download</a>
+      <a href="#">Install App</a>
+      <a href="{% url 'accounts:signup_step1' %}">Sign up</a>
+      <a href="{% url 'accounts:login_step1' %}">Log in</a>
+    </nav>
+  </header>
+
+  <!-- ==================== SCRIPT ==================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      /* ---------- ICON HOVER & ACTIVE ---------- */
+      const icons = [
+        {el: document.querySelector('.home-icon'), unhover: 'home_unhover.svg', hover: 'home_hover.svg'},
+        {el: document.querySelector('.search-icon'), unhover: 'search_unhover.svg', hover: 'search_hover.svg'},
+        {el: document.querySelector('.mic-icon'), unhover: 'mic_unhover.svg', hover: 'mic_hover.svg'}
+      ];
+
+      icons.forEach(iconObj => {
+        const el = iconObj.el;
+        const img = el.querySelector('img');
+
+        if (!el || !img) return;
+
+        const basePath = img.src.substring(0, img.src.lastIndexOf('/') + 1);
+        const unhoverSrc = basePath + iconObj.unhover;
+        const hoverSrc = basePath + iconObj.hover;
+
+        el.addEventListener('mouseenter', () => {
+          if (el.dataset.clicked === "false") img.src = hoverSrc;
+        });
+        el.addEventListener('mouseleave', () => {
+          if (el.dataset.clicked === "false") img.src = unhoverSrc;
+        });
+
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          icons.forEach(i => {
+            if (i.el && i.el.querySelector('img')) {
+              i.el.dataset.clicked = "false";
+              i.el.classList.remove("active");
+              const iBase = i.el.querySelector('img').src.substring(0, i.el.querySelector('img').src.lastIndexOf('/') + 1);
+              i.el.querySelector('img').src = iBase + i.unhover;
+            }
+          });
+
+          el.dataset.clicked = "true";
+          el.classList.add("active");
+          img.src = hoverSrc;
+        });
+      });
+
+      /* ---------- MOBILE MENU TOGGLE ---------- */
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("active");
+        });
+      }
+
+      /* ---------- SCROLL SHADOW EFFECT ---------- */
+      const header = document.getElementById("home-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) {
+          header.style.boxShadow = "0 2px 6px rgba(0,0,0,0.5)";
+        } else {
+          header.style.boxShadow = "none";
+        }
+      });
+    });
+  </script>
+
+  <!-- External JS (optional if you want to separate logic) -->
+  <script src="{% static 'js/header.js' %}"></script>
+
+</body>
+</html>

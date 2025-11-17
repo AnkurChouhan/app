@@ -1,0 +1,418 @@
+/* ------------------ Auth Page Wrapper ------------------ */
+.auth-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ------------------ Auth Card ------------------ */
+.auth-card {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 30px 25px;
+  border-radius: 12px;
+  background-color: #121212;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* ------------------ Logo ------------------ */
+.auth-logo {
+  width: 200px;
+  height: 80px;
+  background: url('/static/images/sonymusic.png') no-repeat left/contain;
+  margin-bottom: 12px;
+}
+
+/* ------------------ Titles ------------------ */
+.auth-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px; /* slightly smaller gap for cleaner spacing */
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #945CFF, #1DB954);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* for Firefox support */
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  color: #e0e0e0; /* slightly brighter so it’s visible on dark background */
+  margin-top: 2px;
+}
+
+/* ------------------ Form & Inputs ------------------ */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+/* ------------------ Form & Inputs ------------------ */
+.auth-form input.question,
+.auth-form select.question {
+  width: 100%;
+  padding: 36px 10px 12px 10px; /* top padding increased to create gap */
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #777;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s, padding-top 0.3s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Placeholder transparent for floating effect */
+.auth-form input.question::placeholder,
+.auth-form select.question::placeholder {
+  color: transparent;
+}
+
+/* Floating label */
+label {
+  position: absolute;
+  top: 10px; /* initial label position when input is empty */
+  left: 10px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+label span {
+  color: #777;
+  font-size: 0.68rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+}
+
+/* Move label above on focus or when input has value */
+.auth-form input.question:focus + label span,
+.auth-form input.question:valid + label span,
+.auth-form select.question:focus + label span,
+.auth-form select.question:valid + label span {
+  top: -4px;  /* label floats higher */
+  font-size: 0.68rem;
+  color: #945CFF;
+}
+
+/* Country select adjustments */
+.auth-form select.question {
+  padding: 36px 10px 12px 10px; /* match email top padding */
+  background: transparent url("data:image/svg+xml;utf8,<svg fill='%23777' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
+  background-size: 12px;
+}
+
+
+/* ------------------ Error message ------------------ */
+.input-error {
+  font-size: 0.78rem;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.input-error.error { color: #ffb920; }
+.input-error.success { color: #4CAF50; }
+.input-error.warning { color: #ffc107; }
+
+/* ------------------ Info icon + text row ------------------ */
+.input-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  width: 100%;
+  font-size: 0.78rem;
+  color: #bbb;
+  background-color: #1a1a1a;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.input-info-row .info-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: #0072c6;
+}
+
+.input-info-row .info-text {
+  flex: 1;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  color: #bbb;
+}
+
+/* ------------------ Checkbox Row Wrapper ------------------ */
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #bbb;
+  font-size: 0.78rem;
+  position: relative;
+}
+
+.hidden-checkbox {
+  display: none;
+}
+
+.checkmark-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #0072c6;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+/* Tick inside circle */
+.checkbox-wrapper .hidden-checkbox:checked + .checkmark-circle::after {
+  content: "✓";
+  color: #fff;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Fill circle when checked */
+.checkbox-wrapper .hidden-checkbox:checked + .checkmark-circle {
+  background-color: #0072c6;
+}
+
+.checkbox-wrapper .info-text a {
+  color: #1DB954;
+  text-decoration: underline;
+  margin-left: 3px;
+}
+
+
+
+
+/* ------------------ OR Divider ------------------ */
+.or-divider {
+  width: 100%;
+  text-align: center;
+  margin: 8px 0;
+  position: relative;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #333;
+}
+
+.or-divider::before { left: 0; }
+.or-divider::after { right: 0; }
+
+.or-divider span {
+  display: inline-block;
+  background: #121212;
+  padding: 0 10px;
+  color: #bbb;
+  font-size: 0.85rem;
+}
+
+/* ------------------ Buttons layout ------------------ */
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 12px;
+}
+
+.form-buttons .auth-btn {
+  width: 320px;
+  height: 54px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.form-buttons .cancel-btn {
+  background-color: #2a2a2a;
+  color: #bbb;
+  border: 2px solid #555;
+}
+
+.form-buttons .cancel-btn:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #1DB954;
+}
+
+.form-buttons .next-btn {
+  background: linear-gradient(90deg, #945CFF, #1DB954);
+  color: #fff;
+}
+
+.form-buttons .next-btn:hover {
+  background: linear-gradient(90deg, #7a3ed8, #1aa34f);
+  color: #fff;
+}
+
+/* ------------------ Consent Popup ------------------ */
+#consent-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1a1a1a;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.6);
+  z-index: 1000;
+  width: 420px;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+#consent-popup h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #945CFF;
+}
+
+#consent-popup p {
+  margin-bottom: 20px;
+  color: #bbb;
+}
+
+#consent-popup button.auth-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  background: #945CFF;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+#consent-popup button.auth-btn:hover {
+  background: #7a3ed8;
+  transform: translateY(-2px);
+}
+
+/* ------------------ Links & Footer ------------------ */
+.auth-links,
+.auth-create {
+  width: 100%;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.auth-links a,
+.auth-create a {
+  color: #1DB954;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.auth-footer {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #bbb;
+  padding: 20px;
+  border: 1px solid #777;
+  border-radius: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-bold { font-weight: bold; margin-bottom: 5px; }
+.footer-regular { font-size: 0.85rem; margin-bottom: 8px; }
+
+.footer-logo-divider {
+  width: 80%;
+  height: 1px;
+  background-color: #777;
+  margin-bottom: 10px;
+}
+
+
+.footer-logo {
+    width: 120px;
+    height: 50px;
+    background-image: url("/static/images/sonymusic.png");/* or use template block for {% static %} */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin: 0 auto;
+}
+
+
+/* ------------------ Responsive ------------------ */
+@media(max-width: 480px) {
+  .auth-card { max-width: 90%; padding: 25px 15px; }
+  .auth-title { font-size: 1.3rem; }
+  .auth-subtitle { font-size: 0.85rem; }
+  .auth-form input.question,
+  .auth-form select.question { font-size: 0.95rem; padding: 20px 10px 14px 10px; }
+  .auth-btn { font-size: 0.9rem; }
+  .auth-footer { font-size: 0.75rem; }
+  #consent-popup { width: 90%; padding: 20px; }
+}

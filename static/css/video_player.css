@@ -1,0 +1,40 @@
+/* ================== VIDEO PLAYER ================== */
+.video-player-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+  background: #24132d;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-player-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.video-player-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.video-player-controls button {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.video-player-controls button:hover {
+  background: rgba(0,0,0,0.9);
+}

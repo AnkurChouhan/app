@@ -1,0 +1,34 @@
+/* ------------------ General Reset ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: "Arial", sans-serif;
+  background-color: #121212;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden; /* prevent horizontal scroll */
+  scroll-behavior: smooth;
+}
+
+/* Hide vertical scrollbar but allow scrolling */
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* Chrome, Safari */
+}
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

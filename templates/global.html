@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Sony Music Entertainment{% endblock %}</title>
+
+  <!-- ================== Global and Layout CSS ================== -->
+  <link rel="stylesheet" href="{% static 'css/global.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Page-specific CSS -->
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <!-- ================== Base Wrapper ================== -->
+  <div id="base-wrapper">
+
+    <!-- ================== Navbar ================== -->
+    <header class="navbar">
+      <div class="container navbar-container">
+        <a href="/" class="logo">Sony</a>
+
+        <nav class="nav-links">
+          <a href="{% url 'payments:subscribe' 1 %}">Premium</a>
+          <a href="#">Explore</a>
+          <a href="#">About</a>
+          <a href="#">Download</a>
+        </nav>
+
+        <div class="auth-buttons">
+          {% if request.user.is_authenticated %}
+            <a href="{% url 'accounts:user_profile' %}" class="btn btn-outline">Profile</a>
+            <a href="{% url 'accounts:logout' %}" class="btn btn-outline">Logout</a>
+          {% else %}
+            <a href="{% url 'accounts:login_step1' %}" class="btn btn-outline">Login</a>
+            <a href="{% url 'accounts:signup_step1' %}" class="btn btn-primary">Sign Up</a>
+          {% endif %}
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+      </div>
+    </header>
+
+    <!-- ================== Page Content ================== -->
+    <div id="page-wrapper">
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- ================== Footer ================== -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-links">
+          <div>
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Jobs</a>
+            <a href="#">Press</a>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <a href="#">Contact</a>
+            <a href="#">FAQs</a>
+            <a href="#">Help Center</a>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <a href="#">Terms</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+
+        <div class="footer-copy">
+          <p>&copy; 2025 Sony Music. Designed by Eazy.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- End base-wrapper -->
+
+  <!-- ================== Global JS ================== -->
+  <script src="{% static 'js/global.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

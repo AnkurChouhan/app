@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Music Portal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/public.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <ul>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'accounts:user_profile' %}">Dashboard</a></li>
+                {% if request.user.is_staff %}
+                    <li><a href="{% url 'accounts:users' %}">Users</a></li>
+                {% endif %}
+                <li><a href="{% url 'accounts:subscription' %}">Subscriptions</a></li>
+                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'accounts:login_step1' %}">Login</a></li>
+                <li><a href="{% url 'accounts:signup_step1' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <header>
+            <h1>{% block header %}Dashboard{% endblock %}</h1>
+        </header>
+        <section>
+            {% block content %}{% endblock %}
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Music Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/sidebar.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

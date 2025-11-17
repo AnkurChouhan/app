@@ -1,0 +1,109 @@
+{% extends 'global.html' %}
+{% load static %}
+
+{% block title %}Sign Up | Sony Music{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+<!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{% block content %}
+<div class="auth-form-wrapper">
+    <div class="auth-card">
+
+        <!-- Logo -->
+        <div class="auth-logo" role="img" aria-label="Sony Music Logo"></div>
+
+        <!-- Title & Subtitle -->
+        <div class="auth-title-container">
+            <div class="auth-title">Create a profile with Sony Music</div>
+            <div class="auth-subtitle">Please provide the following details:</div>
+        </div>
+
+        <!-- Signup Form -->
+        <form method="POST" action="{% url 'accounts:signup_step1' %}" class="auth-form" novalidate>
+            {% csrf_token %}
+
+            <!-- Email Input -->
+            <div class="input-wrapper">
+                <input type="email" name="email" id="email" class="question" placeholder=" " required aria-required="true">
+                <label for="email"><span>Email</span></label>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="input-error {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Country Select -->
+            <div class="input-wrapper">
+                <select name="country" id="country" class="question" required aria-required="true">
+                    <option value="" disabled selected>Select your country</option>
+                    <option value="IN">India</option>
+                    <option value="US">United States</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="GB">United Kingdom</option>
+                </select>
+                <label for="country"><span>Country</span></label>
+            </div>
+
+            <!-- Info Row -->
+            <div class="input-info-row">
+                <span class="info-icon"><i class="fas fa-circle-info"></i></span>
+                <span class="info-text">
+                    Based on your country, we'll save your personal data at the closest possible location according to our privacy policy.
+                </span>
+            </div>
+
+            <!-- Consent Checkbox -->
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="consent" name="consent" class="hidden-checkbox" required aria-required="true">
+                <span class="checkmark-circle"></span>
+                <span class="info-text">
+                    I consent to the processing of personal data* 
+                    <a href="#" onclick="openConsentPopup(event)">Learn more</a>
+                </span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-buttons">
+                <a href="{% url 'accounts:login_step1' %}" class="auth-btn cancel-btn">Cancel</a>
+                <button type="submit" class="auth-btn next-btn">Next</button>
+            </div>
+
+        </form>
+
+        <!-- Already have account -->
+        <div class="auth-links">
+            Already have an account? <a href="{% url 'accounts:login_step1' %}">Click here to log in.</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="auth-footer">
+            <div class="footer-bold">One login, multiple experiences!</div>
+            <div class="footer-regular">
+                By creating an account, your credentials will grant you seamless access across all our brands and platforms. 
+                Manage your profile, explore exclusive content, and enjoy a personalized experience tailored to your preferences, all with a single login.
+            </div>
+            <div class="footer-logo-divider"></div>
+            <div class="footer-logo" role="img" aria-label="Sony Music Footer Logo"></div>
+        </div>
+
+    </div>
+
+    <!-- Consent Popup -->
+    <div id="consent-popup">
+        <h3>Personal Data Processing</h3>
+        <p>Information about how your personal data is handled according to our privacy policy.</p>
+        <button onclick="closeConsentPopup()" class="auth-btn">Close</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/auth.js' %}" defer></script>
+{% endblock %}

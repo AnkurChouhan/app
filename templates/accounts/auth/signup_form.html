@@ -1,0 +1,65 @@
+{% extends 'global.html' %}
+{% load static %}
+
+{% block title %}Sign Up | Sony Music{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-form-wrapper">
+    <div class="auth-card">
+
+        <!-- Logo -->
+        <div class="auth-logo" role="img" aria-label="Sony Music Logo"></div>
+
+        <!-- Titles -->
+        <div class="auth-title-container">
+            <div class="auth-title">Create a profile with Sony Music</div>
+            <div class="auth-subtitle">Step 2: Your personal details</div>
+        </div>
+
+        <!-- Form -->
+        <form method="POST" action="{% url 'accounts:signup_step2' %}" class="auth-form" novalidate>
+            {% csrf_token %}
+
+            <!-- First Name -->
+            <div class="input-wrapper">
+                <input type="text" name="first_name" class="question" placeholder=" " required aria-required="true">
+                <label><span>First Name</span></label>
+            </div>
+
+            <!-- Last Name -->
+            <div class="input-wrapper">
+                <input type="text" name="last_name" class="question" placeholder=" " required aria-required="true">
+                <label><span>Last Name</span></label>
+            </div>
+
+            <!-- Birth Date -->
+            <div class="input-wrapper">
+                <input type="date" name="birth_day" class="question" placeholder=" " required aria-required="true">
+                <label><span>Birth Date</span></label>
+            </div>
+
+            <!-- Display messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="input-error {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- Buttons -->
+            <div class="form-buttons">
+                <a href="{% url 'accounts:signup_step1' %}" class="auth-btn cancel-btn">Back</a>
+                <button type="submit" class="auth-btn next-btn">Next</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/auth.js' %}" defer></script>
+{% endblock %}

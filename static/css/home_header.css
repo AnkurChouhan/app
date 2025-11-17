@@ -1,0 +1,344 @@
+/* RESET */
+#home-header,
+#home-header * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+/* HEADER BASE */
+#home-header {
+  background-color: #000;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  height: 70px; /* set your desired height */
+
+}
+
+/* HEADER CONTAINER */
+#home-header .container.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 10px 40px;
+  position: relative; /* needed for absolute centering */
+}
+
+
+/* LEFT LOGO - MUCH LARGER */
+#home-header #logo a {
+  display: block;
+  width: 80px !important;  /* Force the width */
+  height: 100px !important;  /* Force the height */
+  background-image: url('../images/sonymusic.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#logo {
+  width: 80px;  /* Ensure the parent has the same size */
+  height: 100px;
+}
+
+/* CENTER NAVIGATION */
+.center-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: auto;          /* shrink to fit content */
+  max-width: 900px;     /* optional max width */
+  padding: 0;           /* remove extra padding */
+  
+}
+
+
+/* HOME ICON */
+.home-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
+
+
+.home-icon img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.home-icon:hover img,
+.home-icon.active img {
+  filter: brightness(0) invert(0); /* black icon on hover/active */
+}
+
+/* SEARCH BAR - BIGGER & TALLER */
+.search-bar {
+  flex: 1;                /* take all available space in center-nav */
+  min-width: 440px;       /* optional minimum width */
+  max-width: 440px;       /* optional maximum width */
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  padding: 14px 24px;
+  height: 50px;
+  box-sizing: border-box;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.search-bar:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px rgba(30, 215, 96, 0.3);
+}
+
+.search-bar i {
+  color: #b3b3b3;
+  margin: 0 12px;
+  font-size: 18px;
+}
+
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;        /* slightly larger for readability */
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  padding: 0;
+}
+
+.search-bar input::placeholder {
+  color: #b3b3b3;
+  font-size: 15px;        /* match input text size */
+}
+
+
+/* RESET */
+#home-header,
+#home-header * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+/* HEADER BASE */
+#home-header {
+  background-color: #000;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  height: 70px; /* set your desired height */
+
+}
+
+/* HEADER CONTAINER */
+#home-header .container.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 10px 40px;
+  position: relative; /* needed for absolute centering */
+}
+
+
+/* LEFT LOGO */
+#home-header #logo a {
+  display: block;
+  width: 140px;            /* slightly wider for better visibility */
+  height: 36px;            /* slightly shorter to fit header */
+  background-image: url('../images/sonymusic.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  flex-shrink: 0;
+}
+
+/* CENTER NAVIGATION */
+.center-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: auto;          /* shrink to fit content */
+  padding: 0;           /* remove extra padding */
+  
+}
+
+
+/* HOME ICON */
+.home-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
+
+
+.home-icon img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.home-icon:hover img,
+.home-icon.active img {
+  filter: brightness(0) invert(0); /* black icon on hover/active */
+}
+
+/* SEARCH BAR - BIGGER & TALLER */
+.search-bar {
+  flex: 1;                /* take all available space in center-nav */
+  min-width: 440px;       /* optional minimum width */
+  max-width: 440px;       /* optional maximum width */
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  padding: 14px 24px;
+  height: 50px;
+  box-sizing: border-box;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.search-bar:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px rgba(30, 215, 96, 0.3);
+}
+
+.search-bar i {
+  color: #b3b3b3;
+  margin: 0 12px;
+  font-size: 18px;
+}
+
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;        /* slightly larger for readability */
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  padding: 0;
+}
+
+.search-bar input::placeholder {
+  color: #b3b3b3;
+  font-size: 15px;        /* match input text size */
+}
+
+
+/* RIGHT NAVIGATION */
+.right-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;                  /* smaller spacing between items */
+  flex-shrink: 0;
+  margin-left: 16px;          /* small spacing from search bar */
+}
+
+/* LINKS */
+.right-nav .nav-link {
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;       /* slightly bigger text for better balance */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.right-nav .nav-link:hover {
+  color: #1db954;
+}
+
+.install-app i {
+  font-size: 16px;
+}
+
+/* AUTH BUTTONS */
+.auth-buttons {
+  display: flex;
+  gap: 12px; /* reduce space between buttons */
+}
+
+.btn-outline, .btn-primary {
+  font-size: 16px;      
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  padding: 8px 20px;    /* balanced with home icon height */
+  border-radius: 24px;
+}
+
+.btn-outline {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background-color: #fff;
+  color: #121212;
+}
+
+.btn-primary {
+  border: none;
+  background-color: #1db954;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #1ed760;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 900px) {
+  .center-nav {
+    gap: 15px;
+    min-width: 200px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .right-nav .nav-link {
+    display: none; /* hide text links on mobile */
+  }
+}

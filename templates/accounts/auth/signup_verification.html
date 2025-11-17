@@ -1,0 +1,64 @@
+{% extends 'global.html' %}
+{% load static %}
+
+{% block title %}Sign Up | Sony Music{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-form-wrapper">
+    <div class="auth-card">
+
+        <!-- Logo -->
+        <div class="auth-logo" role="img" aria-label="Sony Music Logo"></div>
+
+        <!-- Title & Subtitle -->
+        <div class="auth-title-container">
+            <div class="auth-title">Verify your account</div>
+            <div class="auth-subtitle">Step 4: Enter verification code</div>
+        </div>
+
+        <!-- Verification Form -->
+        <form method="POST" action="{% url 'accounts:signup_step4' %}" class="auth-form" novalidate>
+            {% csrf_token %}
+
+            <!-- Verification Code Input -->
+            <div class="input-wrapper">
+                <input type="text" name="verification_code" class="question" placeholder=" " required aria-required="true">
+                <label><span>Verification Code</span></label>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="input-error {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Form Buttons -->
+            <div class="form-buttons">
+                <a href="{% url 'accounts:signup_step3' %}" class="auth-btn cancel-btn">Back</a>
+                <button type="submit" class="auth-btn next-btn">Confirm</button>
+            </div>
+
+        </form>
+
+        <!-- Footer -->
+        <div class="auth-footer">
+            <div class="footer-bold">One login, multiple experiences!</div>
+            <div class="footer-regular">
+                Your MusicPortal credentials will work across all brands in the group. 
+                Enjoy a personalized experience with a single login.
+            </div>
+            <div class="footer-logo-divider"></div>
+            <div class="footer-logo" role="img" aria-label="Sony Music Footer Logo"></div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/auth.js' %}" defer></script>
+{% endblock %}

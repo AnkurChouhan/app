@@ -1,0 +1,37 @@
+{% extends 'accounts/account_base.html' %}
+{% load static %}
+
+{% block account_content %}
+
+<div class="profile-overview">
+
+  <div class="account-card">
+    <h2>Profile</h2>
+    <div class="account-row"><span>Username:</span> {{ request.user.username }}</div>
+    <div class="account-row"><span>Email:</span> {{ request.user.email }}</div>
+    <div class="account-row">
+      <span>Membership:</span>
+      {% if request.user.is_premium %}
+        <span class="membership-badge premium">Premium</span>
+      {% else %}
+        <span class="membership-badge free">Free</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="account-card">
+    <h2>Your Plan</h2>
+    {% if subscriptions %}
+      {% for sub in subscriptions %}
+        <div class="account-row"><span>Plan:</span> {{ sub.plan_name }}</div>
+        <div class="account-row"><span>Status:</span> {{ sub.status }}</div>
+        <div class="account-row"><span>Next Billing:</span> {{ sub.next_billing_date|date:"M d, Y" }}</div>
+      {% endfor %}
+    {% else %}
+      <p>You are on the <strong>Free Plan</strong>.</p>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

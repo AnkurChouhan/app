@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Sony Music</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/home_header.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home_footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/music_player.css' %}">
+  <link rel="stylesheet" href="{% static 'css/video_player.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  {% include 'includes/header.html' %}
+
+  <!-- Main Content -->
+  <main id="home-main">
+    <!-- Hero Section -->
+    <section id="hero-section">
+      <div id="hero-inner" class="container">
+        <div id="hero-text">
+          <h1>Your Music. Always With You.</h1>
+          <p>Stream millions of songs. Discover new music every day.</p>
+          {% if not request.user.is_authenticated %}
+          <a href="{% url 'accounts:signup_step1' %}" class="btn-hero">Get Started</a>
+          {% endif %}
+        </div>
+        <div id="hero-image">
+          <img src="{% static 'images/hero-banner.png' %}" alt="Music preview">
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features-section">
+      <div id="feature-grid" class="container">
+        <div class="feature-item">
+          <i class="fas fa-music"></i>
+          <h3>Vast Library</h3>
+          <p>Find music across genres and eras.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-download"></i>
+          <h3>Download & Offline</h3>
+          <p>Listen even when offline.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-heart"></i>
+          <h3>Daily Mixes</h3>
+          <p>Curated playlists just for you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Playlists Section -->
+    <section id="playlists-section">
+      <div class="container">
+        <h2>Featured Playlists</h2>
+        <div class="playlist-carousel">
+          {% for playlist in playlists %}
+          <div class="playlist-card">
+            <img src="{{ playlist.image.url }}" alt="{{ playlist.name }}">
+            <h4>{{ playlist.name }}</h4>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Artists Section -->
+    <section id="artists-section">
+      <div class="container">
+        <h2>Top Artists</h2>
+        <div class="artist-grid">
+          {% for artist in artists %}
+          <div class="artist-card">
+            <img src="{{ artist.image.url }}" alt="{{ artist.name }}">
+            <h4>{{ artist.name }}</h4>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Albums Section -->
+    <section id="albums-section">
+      <div class="container">
+        <h2>New Albums</h2>
+        <div class="album-grid">
+          {% for album in albums %}
+          <div class="album-card">
+            <img src="{{ album.cover.url }}" alt="{{ album.title }}">
+            <h4>{{ album.title }}</h4>
+            <p>{{ album.artist.name }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Optional Video Section -->
+    <section id="videos-section">
+      <div class="container">
+        <h2>Featured Videos</h2>
+        <div class="video-player-container">
+          <video controls>
+            <source src="{% static 'videos/sample.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-player-controls">
+            <button><i class="fas fa-play"></i></button>
+            <button><i class="fas fa-pause"></i></button>
+            <button><i class="fas fa-volume-up"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  {% include 'includes/footer.html' %}
+
+  <!-- Music Player (only for logged-in users) -->
+  {% if request.user.is_authenticated %}
+  <div id="music-player">
+    <div class="player-info">
+      <span>Now Playing: <strong>Song Title</strong> - Artist</span>
+    </div>
+    <div class="player-controls">
+      <i class="fas fa-backward"></i>
+      <i class="fas fa-play"></i>
+      <i class="fas fa-forward"></i>
+    </div>
+    <div class="player-volume">
+      <i class="fas fa-volume-up"></i>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- JS -->
+  <script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>

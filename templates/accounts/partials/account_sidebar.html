@@ -1,0 +1,21 @@
+<div class="account-sidebar">
+  <h3>Account</h3>
+  <ul class="sidebar-menu">
+    <li><a href="{% url 'accounts:user_profile' %}" class="active"><i class="fas fa-user"></i> Overview</a></li>
+    <li><a href="{% url 'accounts:user_edit_profile' %}"><i class="fas fa-user-cog"></i> Edit Profile</a></li>
+    <li><a href="{% url 'accounts:subscription' %}"><i class="fas fa-credit-card"></i> Manage Subscription</a></li>
+  </ul>
+
+  <h3>Security</h3>
+  <ul class="sidebar-menu">
+    <li><a href="#"><i class="fas fa-lock"></i> Change Password</a></li>
+    <li><a href="#"><i class="fas fa-bell"></i> Notification Settings</a></li>
+    <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+  </ul>
+
+  <h3>Support</h3>
+  <ul class="sidebar-menu">
+    <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+    <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</div>

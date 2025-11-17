@@ -1,0 +1,64 @@
+/* Wrapper: sidebar + main content */
+.account-wrapper {
+  display: flex;
+  min-height: calc(100vh - 100px); /* adjust for footer height */
+}
+
+/* Sidebar */
+.account-sidebar {
+  width: 250px;
+  background: #656565;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.account-sidebar h3 {
+  margin-top: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+.account-sidebar .sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.account-sidebar .sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.account-sidebar .sidebar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 10px;
+  display: block;
+  border-radius: 4px;
+}
+
+.account-sidebar .sidebar-menu li a:hover,
+.account-sidebar .sidebar-menu li a.active {
+  background: #1db954;
+  color: #fff;
+}
+
+/* Main Content */
+.account-main {
+  flex: 1;
+  padding: 20px;
+  background: #2c2c2c;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.account-card {
+  background: #3c3c3c;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}

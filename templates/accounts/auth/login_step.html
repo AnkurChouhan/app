@@ -1,0 +1,82 @@
+{% extends 'global.html' %}
+{% load static %}
+
+{% block title %}Login | MusicPortal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-form-wrapper">
+    <div class="auth-card">
+
+        <!-- Logo -->
+    <div class="auth-logo" role="img" aria-label="Sony Music Logo"></div>
+
+        <!-- Titles -->
+        <div class="auth-title-container">
+            <h1 class="auth-title">Log in to Sony Music account</h1>
+            <p class="auth-subtitle">Sign in with your username or email</p>
+        </div>
+
+        <!-- Login Form -->
+        <form method="POST" action="{% url 'accounts:login_step1' %}" class="auth-form" novalidate>
+            {% csrf_token %}
+
+            <!-- Username / Email Input -->
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    name="username" 
+                    id="username" 
+                    class="question" 
+                    placeholder=" " 
+                    required 
+                    aria-required="true"
+                    aria-label="Username or Email"
+                >
+                <label for="username"><span>Email</span></label>
+
+                <!-- Display Django messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="input-error {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-buttons">
+                <button type="submit" class="auth-btn next-btn">Next</button>
+            </div>
+        </form>
+
+        <!-- Additional Links -->
+        <div class="auth-links">
+            <a href="{% url 'accounts:password_reset' %}">Forgot your password?</a>
+        </div>
+
+        <!-- OR Divider -->
+        <div class="or-divider"><span>OR</span></div>
+
+        <!-- Signup Prompt -->
+        <div class="auth-create">
+            <p>Don't have an account? <a href="{% url 'accounts:signup_step1' %}">Sign up now</a></p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="auth-footer">
+            <div class="footer-bold">One login, multiple experiences!</div>
+            <div class="footer-regular">Your MusicPortal credentials are now valid for all brands within the group.</div>
+            <div class="footer-logo-divider"></div>
+            <div class="footer-logo" role="img" aria-label="Sony Music Footer Logo"></div>
+        </footer>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/auth.js' %}" defer></script>
+{% endblock %}

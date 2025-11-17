@@ -1,0 +1,55 @@
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(20deg, #ff0984, #1e90ff); /* pink → blue */
+    padding: 12px 28px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-subtitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #ffffff;
+
+}
+
+.footer-description {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* Button */
+.btn-hero {
+    text-decoration: none;
+    background: #ffffff;   /* solid white */
+    color: #000000;        /* dark text */
+    width: 160px;          /* fixed width */
+    height: 45px;          /* fixed height */
+    border-radius: 999px;  /* pill shape */
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;          /* no border */
+    transition: all 0.2s ease-in-out;
+
+    /* Center text inside */
+    display: flex;
+    align-items: center;   /* vertical center */
+    justify-content: center; /* horizontal center */
+}
+
+.btn-hero:hover {
+    background: #f0f0f0;   /* light gray on hover */
+}
